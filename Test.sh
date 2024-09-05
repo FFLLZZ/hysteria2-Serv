@@ -159,7 +159,7 @@ cleanup() {
   rm -rf "$HYSTERIA_WORKDIR/web" "$HYSTERIA_WORKDIR/config.yaml"
 }
 
-# 安装和配置 socks5
+安装和配置 socks5
 socks5_config(){
   # 提示用户输入 socks5 端口号
   read -p "请输入 socks5 端口号: " SOCKS5_PORT
@@ -236,7 +236,7 @@ install_socks5(){
   fi
 }
 
-# 安装和配置 Nezha Agent
+安装和配置 Nezha Agent
 install_nezha(){
   mkdir -p "$WORKDIR"
   read -p "请输入 Nezha Dashboard 地址(如: www.nezha.com):" NEZHA_SERVER
@@ -274,7 +274,7 @@ install_hysteria() {
   cleanup
 }
 
-# 添加 crontab 守护进程任务
+添加 crontab 守护进程任务
 add_crontab_task() {
   crontab -l > /tmp/crontab.bak
   echo "*/1 * * * * if ! pgrep -f nezha-agent; then nohup $WORKDIR/service.sh >/dev/null 2>&1 & fi" >> /tmp/crontab.bak
