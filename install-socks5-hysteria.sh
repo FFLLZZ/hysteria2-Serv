@@ -182,7 +182,7 @@ install_hysteria() {
   print_config
 }
 
-# 安装和配置 socks5
+安装和配置 socks5
 socks5_config(){
   # 提示用户输入 socks5 端口号
   read -p "请输入 socks5 端口 (面板开放的TCP端口): " SOCKS5_PORT
@@ -259,7 +259,7 @@ install_socks5(){
   fi
 }
 
-# 下载 Nezha Agent
+下载 Nezha Agent
 download_agent() {
     DOWNLOAD_LINK="https://github.com/nezhahq/agent/releases/latest/download/nezha-agent_freebsd_amd64.zip"
     if ! wget -qO "$ZIP_FILE" "$DOWNLOAD_LINK"; then
@@ -269,7 +269,7 @@ download_agent() {
     return 0
 }
 
-# 解压缩 Nezha Agent
+解压缩 Nezha Agent
 decompression() {
     unzip "$1" -d "$TMP_DIRECTORY"
     EXIT_CODE=$?
@@ -280,12 +280,12 @@ decompression() {
     fi
 }
 
-# 安装 Nezha Agent
+安装 Nezha Agent
 install_agent() {
     install -m 755 ${TMP_DIRECTORY}/nezha-agent ${WORKDIR}/nezha-agent
 }
 
-# 生成运行 Nezha Agent 的脚本
+生成运行 Nezha Agent 的脚本
 generate_run_agent(){
     echo "关于接下来需要输入的三个变量，请注意："
     echo "Dashboard 站点地址可以写 IP 也可以写域名（域名不可套 CDN）;但是请不要加上 http:// 或者 https:// 等前缀，直接写 IP 或者域名即可；"
@@ -316,7 +316,7 @@ EOF
     chmod +x ${WORKDIR}/start.sh
 }
 
-# 运行 Nezha Agent
+运行 Nezha Agent
 run_agent(){
     nohup ${WORKDIR}/start.sh >/dev/null 2>&1 &
     printf "nezha-agent已经准备就绪，请按下回车键启动\n"
@@ -334,7 +334,7 @@ run_agent(){
     fi
 }
 
-# 安装和配置 Nezha Agent
+安装和配置 Nezha Agent
 install_nezha_agent(){
   mkdir -p ${WORKDIR}
   cd ${WORKDIR}
@@ -349,7 +349,7 @@ install_nezha_agent(){
   [ -e ${WORKDIR}/start.sh ] && run_agent
 }
 
-# 添加 crontab 守护进程任务
+添加 crontab 守护进程任务
 add_crontab_task() {
   crontab -l > /tmp/crontab.bak
   echo "*/12 * * * * if ! pgrep -f nezha-agent; then nohup $WORKDIR/start.sh >/dev/null 2>&1 & fi" >> /tmp/crontab.bak
