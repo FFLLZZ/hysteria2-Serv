@@ -16,17 +16,7 @@
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/gshtwy/socks5-for-serv00/main/install-socks5-hysteria.sh)
 ```
-- Socks5 pm2模式
 
-~`bash <(curl -s https://raw.githubusercontent.com/gshtwy/socks5-for-serv00/main/install-socks5-pm2.sh)`~
-
-
-卸载pm2
-```bash
-pm2 unstartup
-pm2 delete all
-npm uninstall -g pm2
-```
 ## 清理服务器
 
 ```bash
@@ -76,7 +66,8 @@ rm -rf ~/*
 }
 ```
 
-
+老王脚本hysteria2
+"sshpass -p '$password' ssh -o StrictHostKeyChecking=no 'userxxx@$ssh' 'curl -s https://raw.githubusercontent.com/eooce/scripts/master/containers-shell/00-hy2.sh | PORT=000000 bash'"
 
 
 # 致谢
